@@ -1,0 +1,9 @@
+config筆記
+
+使用app.config.from_object的方式加載配置文件
+1.導入 import config
+2.使用 app.config.from_object(config)
+
+使用app.config.from_pyfile的方式加載配置文件
+這種方式不需要import 直接使用app.config.from_pyfile('flask_03_ConfigDemo.py', silent=True)便可執行
+檔案必須為全名

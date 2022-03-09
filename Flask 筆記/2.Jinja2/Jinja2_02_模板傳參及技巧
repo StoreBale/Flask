@@ -1,0 +1,26 @@
+1.在使用 render_template 渲染模板的時候可以傳遞參數，
+  可以傳遞關鍵字參數，以後在模板中使用
+  如果參數過多，可以放到字典中，要使用時添加 **->dict()
+
+<code>
+  @app.route('/')
+def hello_world():  # put application's code here
+    context = {
+        'username': 'King',
+        'age': '10',
+        'country': 'Tai',
+        'teen': {
+            'name': 'Aces',
+            'height': 174
+        }
+    }
+    return render_template('index_02.html', **context)  # **=dict
+</code>
+<code HTML>
+    這是從模板中渲染的數據
+    <p>{{ username }}</p>
+    <p>{{ age }}</p>
+    <p>{{ country }}</p>
+    <p>{{ teen.name }}</p>
+    <p>{{ teen['name'] }}</p>
+</code HTML>

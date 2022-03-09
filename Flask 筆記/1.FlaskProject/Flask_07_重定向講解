@@ -1,0 +1,21 @@
+Flask_07_重定向講解
+重定向（網頁跳轉）分為：永久性和暫時性
+  永久性重定向(301)：多用於舊網址被廢棄，轉到新的網址確保用戶的訪問。
+    如：jingdong.com->jd.com
+  暫時性重定向(302)：頁面暫時性的跳轉，比如需要登入的權限，沒有的話則會跳轉到登入頁面
+
+flask中重定向：
+flask終有一個函數 redirect 可以重新定向到指定頁面，搭配url_for使用
+<code>
+  @app.route('/login/')
+  def login():
+      return '這是登入介面'
+
+
+  @app.route('/profile/')
+  def profile():
+      if request.args.get('name'):
+          return '個人中心'
+      else:
+          return redirect(url_for('login'))
+</code>

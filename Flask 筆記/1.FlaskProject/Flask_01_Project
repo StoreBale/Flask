@@ -1,0 +1,34 @@
+<code>
+# 從flask包導入Flask這個類
+# Flask 是項目的核心
+from flask import Flask
+
+# 創建一個Flask對象，傳遞__name__參數進去
+# name參數的作用：
+# 1.可以規定模板和靜態文件的查找路徑
+# 2.以後Flask插件如果報錯了，可以通過這個參數找到具體的錯誤位置
+app = Flask(__name__)
+
+# app.route：是一個裝飾器
+# @app.route('/')就是將url中的/映射到hello world這個函數上面
+# 以後訪問這個網站，會執行hello world這個函數，將函數返回值返回給瀏覽器
+# www.candy.com/ -> hello world函數
+@app.route('/')
+def hello_world():  # put application's code here
+    return 'Hello World!'
+
+# www.candy.com/list/
+@app.route('/list/')
+def my_list():
+    return 'my list'
+
+
+# 如果這個文件是作為一個主文件運行，那麼就執行app.run方法
+# 也就是啟動網站
+if __name__ == '__main__':
+    # app.run，Flask中的一個測試應用服務器
+    # while True:
+    #   listen()
+    #   input()
+    app.run(port=6000)
+</code>

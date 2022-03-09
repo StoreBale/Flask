@@ -1,0 +1,40 @@
+傳遞參數
+傳遞參數的語法'/<參數名>/'
+  在函數中也要定義函數意義
+  @app.route('/article/<article_id>/')
+  def article_detail(article_id):
+    return f'你請求的文章是：{article_id}'
+
+string 文本
+int 整數
+float 浮點數
+path 和string類似 接受斜槓 將／視為文字
+  @app.route('/article/<path:test>/')
+  def test_detail(test):
+      return f'test_detail: {test}'
+
+uuid 只接受uuid字符串
+  import uuid , print(uuid.uuid4())
+  @app.route('/u/<uuid:user_id>/')
+  def user_detail(user_id):
+    return f'用戶的個人中心 {user_id}'
+
+any 可以指定多種路徑
+  @app.route('/<any(blog,user,sss):url_path>/<id>/')
+  def detail(url_path, id):
+      if url_path == 'blog':
+          return f'博客詳情： {url_path}'
+      elif url_path == 'user':
+          return f'使用者詳情： {url_path}'
+      else:
+          return '用戶詳情： %s' % id
+
+
+接收用戶傳遞的參數：
+1.使用path形式，將參數放到路徑中
+2.使用查詢字串的方式
+  @app.route('/d/')
+  def d():
+      wd = request.args.get('wd')
+      return f'查詢字串的方式傳遞的參數 {wd}'
+  # /d/?wd=xxxx

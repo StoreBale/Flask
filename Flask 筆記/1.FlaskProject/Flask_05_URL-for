@@ -1,0 +1,30 @@
+url_for的基本使用
+
+url_for
+第一個參數：函數的名字
+後面的參數：傳遞給url
+  如果傳遞的參數已經被定義，則會使用path形式
+  未被定義則使用查詢字符串形式放到url中
+
+已被定義：
+<code>
+  @app.route('/list/<page>/<ccc>')
+  def my_list(page, ccc):
+      return f'my_list {page} {ccc}'
+
+  print(url_for('my_list', page=1, ccc=888))
+</code>
+
+為什麼使用url_for：
+將來如果修改了URL但沒有修改函數名，就不用到處替換URL
+url_for會自動的處理那些特殊的字符，不需要手動去處理
+<code>
+def hello_world2():  # put application's code here
+    # (endpoint,**values)
+    a = url_for('login', next='/')
+    print(a)
+    return a
+    # a =/login/?next=%2F
+</code>
+
+強烈建議使用url_for來反轉url
