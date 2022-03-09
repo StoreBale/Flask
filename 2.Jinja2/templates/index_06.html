@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首頁</title>
+</head>
+<body>
+{#{% if username == 'Ting' %}#}
+{#    <p>Ting</p>#}
+{#{% else %}#}
+{#    <p>not Ting</p>#}
+{#{% endif %}#}
+{##}
+{#{% if age>=18 %}#}
+{#    <p>成年</p>#}
+{#{% else %}#}
+{#    <p>不可進入</p>#}
+{#{% endif %}#}
+<ul>
+    <table>
+        <tr>
+            <th>序號</th>
+            <th>名稱</th>
+            <th>總數</th>
+        </tr>
+        {% for user in users|reverse %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ user }}</td>
+                <td>{{ loop.length }}</td>
+            </tr>
+        {% else %}
+            <li>無資料</li>
+        {% endfor %}
+    </table>
+</ul>
+
+<table>
+    <thead>
+    <tr>
+        <th>用戶</th>
+        <th>年齡</th>
+        <th>國家</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        {% for value in person.values() %}
+            <td>{{ value }}</td>
+        {% endfor %}
+    </tr>
+    <tr>
+        {% for value in person.keys() %}
+            <td>{{ value }}</td>
+        {% endfor %}
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
