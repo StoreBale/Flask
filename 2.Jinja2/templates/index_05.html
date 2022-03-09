@@ -5,6 +5,7 @@
     <title>首頁</title>
 </head>
 <body>
-    <p>{{ article }}</p>
+{#    <p>{{ article|cut }}</p>#}
+    <p>發表時間 ： {{ create_time|handle_time }}</p>
 </body>
 </html>
