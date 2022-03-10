@@ -16,7 +16,7 @@ def my_list():
 app.add_url_rule('/list/', endpoint='end', view_func=my_list)
 
 with app.test_request_context():
-    print(url_for('index'))
+    print(url_for('end'))
 
 if __name__ == '__main__':
     app.run()
