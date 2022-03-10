@@ -1,0 +1,32 @@
+{% from "index_07_macro.html" import input with context %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>宏</title>
+</head>
+<body>
+
+{#{% macro input(name , value="",type="text") %}#}
+{#    <input type="{{ type }}" name="{{ name }}" value="{{ value }}">#}
+{#{% endmacro %}#}
+
+<h1>登陸</h1>
+<table>
+    <tbody>
+    <tr>
+        <td>用戶名</td>
+        <td>{{ input('username') }}</td>
+    </tr>
+    <tr>
+        <td>密碼</td>
+        <td>{{ input('password',type="password") }}</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>{{ input(value="提交",type="submit") }}</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
