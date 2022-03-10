@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首頁</title>
+    <style>
+        .nav ul {
+            overflow: hidden;
+        }
+
+        .nav ul li {
+            float: left;
+            margin: 0 20px;
+        }
+    </style>
+</head>
+<body>
+我是父模板中繼承下來的代碼
+<nav class="nav">
+    <ul>
+        <li>首頁</li>
+        <li>課程詳情</li>
+        <li>教程</li>
+        <li>關於</li>
+    </ul>
+</nav>
+{% block body_block %}
+    <p style="background:red">父模板</p>
+{% endblock %}
+<footer>
+    底部
+</footer>
+</body>
+</html>
