@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>set_with</title>
+</head>
+<body>
+{% set username='Ting' %}
+<p>用戶名： {{ username }}</p>
+
+{% with %}
+    {% set  room="classroom" %}
+    <p>班級： {{ room }}</p>
+{% endwith %}
+<p>另外一個班級{{ room }} {{ username }}</p>
+</body>
+</html>
