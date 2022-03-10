@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>小程序</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        .container {
+            width: 375px;
+            height: 600px;
+            background: #99cce1;
+        }
+
+        .search-group {
+            padding: 14px 8px;
+            background: #31cccc;
+        }
+
+        .search-group .search-input {
+            background: #fff;
+            display: block;
+            width: 100%;
+            height: 30px;
+            border-radius: 5px;
+            outline: none;
+            border: none;
+        }
+
+        .item-list-group .item-list-top {
+            overflow: hidden;
+            padding: 10px 10px;
+        }
+
+        .item-list-top .module-title {
+            float: left;
+        }
+
+        .item-list-top .more-btn {
+            float: right;
+        }
+
+        .list-group {
+            overflow: hidden;
+            padding: 0 10px;
+        }
+
+        .list-group .item-group {
+            float: left;
+            margin-right: 10px;
+        }
+
+        .item-group .thumbnail {
+            display: block;
+            width: 100px;
+        }
+
+        .item-group .item_title {
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .item-group .item-rating {
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .item-rating img {
+            width: 10px;
+            height: 10px;
+        }
+    </style>
+</head>
+<body>
+{% macro itemGroup(thunbnail,title,rating) %}
+    <div class="item-group">
+        <img src="{{ thunbnail }}" alt="" class="thumbnail" height="90px">
+        <p class="item_title">{{ title }}</p>
+        <p class="item-rating">
+            {#            {% set rating = 9.5 %}#}
+            {% set lights = ((rating|int)/2)|int %}
+            {% set halfst = ((rating|int)%2) %}
+            {% set grays = 5-lights-halfst %}
+            {% for foo in range(0,lights) %}
+                <img src="{{ url_for('static',filename="img/全星.png") }}" alt="">
+            {% endfor %}
+            {% for half in range(0,halfst) %}
+                <img src="{{ url_for('static',filename="img/半星.png") }}" alt="">
+            {% endfor %}
+            {% for foo in range(0,grays) %}
+                <img src="{{ url_for('static',filename="img/暗星.png") }}" alt="">
+            {% endfor %}
+            {{ rating }}
+        </p>
+    </div>
+{% endmacro %}
+{#{% macro listGroup(moudle_title,items) %}#}
+{##}
+{#{% endmacro %}#}
+<div class="container">
+    <div class="search-group">
+        <input type="text" class="search-input" placeholder="搜索...">
+    </div>
+
+    <div class="item-list-group" >
+        <div class="item-list-top">
+            <span class="module-title">雪狐</span>
+            <a href="#" class="more-btn">更多</a>
+        </div>
+        <div class="list-group">
+            {{ itemGroup(url_for('static',filename="img/雪狐1.jpg"),'雪狐1',7.5) }}
+            {{ itemGroup(url_for('static',filename="img/雪狐2.jpeg"),'雪狐2',6) }}
+            {{ itemGroup(url_for('static',filename="img/茶金狐狸.jpeg"),'茶金狐狸',9.5) }}
+        </div>
+    </div>
+    <div class="item-list-group">
+        <div class="item-list-top">
+            <span class="module-title">貓咪</span>
+            <a href="#" class="more-btn">更多</a>
+        </div>
+        <div class="list-group">
+            {{ itemGroup(url_for('static',filename="img/貓1.jpeg"),'貓1',8.2) }}
+            {{ itemGroup(url_for('static',filename="img/貓2.jpeg"),'貓2',7.4) }}
+            {{ itemGroup(url_for('static',filename="img/貓3.jpeg"),'貓3',6.6) }}
+        </div>
+    </div>
+    <div class="item-list-group">
+        <div class="item-list-top">
+            <span class="module-title">狗</span>
+            <a href="#" class="more-btn">更多</a>
+        </div>
+        <div class="list-group">
+            {{ itemGroup(url_for('static',filename="img/狗1.jpeg"),'狗1',7.7) }}
+            {{ itemGroup(url_for('static',filename="img/狗2.jpeg"),'狗2',10) }}
+            {{ itemGroup(url_for('static',filename="img/狗3.jpeg"),'狗3',9.8) }}
+        </div>
+    </div>
+</div>
+</body>
+</html>
