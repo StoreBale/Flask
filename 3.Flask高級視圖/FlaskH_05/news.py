@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template
 
-news_bp = Blueprint('news', __name__, url_prefix='/news', template_folder='test')
+news_bp = Blueprint('news', __name__, url_prefix='/news', template_folder='test', static_folder='test')
 
 
 @news_bp.route('/list/')
