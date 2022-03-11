@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, url_for,render_template
 from FlaskH_05.user import user_bp
 from FlaskH_05.news import news_bp
 
@@ -9,7 +9,8 @@ app.register_blueprint(news_bp)
 
 @app.route('/')
 def hello_world():  # put application's code here
-    return 'Hello World!'
+    print(url_for('news.news_list'))
+    return render_template('FlaskH_05_index.html')
 
 
 if __name__ == '__main__':
