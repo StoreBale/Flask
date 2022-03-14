@@ -19,3 +19,13 @@ engine = create_engine(DB_URI)
 conn = engine.connect()
 result = conn.execute('select 1')
 print(result.fetchone())
+
+
+# class Person(object):
+#     name = 'xx'
+#     age = 18
+#     country = 'xx'
+
+# p = Person('xx',xx)
+# p.save()
+#
