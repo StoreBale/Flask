@@ -29,7 +29,7 @@ class Article(Base):
     id = Column(Integer,primary_key=True,autoincrement=True)
     title = Column(String(50),nullable=False)
     price = Column(Float,nullable=False)
-    # content = Column(Text)
+    context = Column(Text)
 
     def __repr__(self):
         return "<Article(title:%s)>" % self.title
@@ -39,7 +39,7 @@ class Article(Base):
 
 # 1. equal
 # article = session.query(Article).filter(Article.price == 79).all()
-print(article)
+# print(article)
 
 # 2. not equal
 # articles = session.query(Article).filter(Article.title != 'title0').all()
@@ -50,8 +50,6 @@ print(article)
 # print(articles)
 
 # 4. in：
-# for xxx in xxx
-# def _in()
 # articles = session.query(Article).filter(Article.title.in_(['title1','title2'])).all()
 # print(articles)
 
@@ -62,16 +60,16 @@ print(article)
 # print(articles)
 
 # is null
-# articles = session.query(Article).filter(Article.content==None).all()
+# articles = session.query(Article).filter(Article.context==None).all()
 # print(articles)
 
 # is not null
-# articles = session.query(Article).filter(Article.content!=None).all()
+# articles = session.query(Article).filter(Article.context!=None).all()
 # print(articles)
 
 # and
-# articles = session.query(Article).filter(Article.title=='abc',Article.content=='abc').all()
-# print(articles)
+articles = session.query(Article).filter(Article.title=='title1',Article.context=='7').all()
+print(articles)
 
 # or
 # articles = session.query(Article).filter(or_(Article.title=='abc',Article.content=='abc'))
