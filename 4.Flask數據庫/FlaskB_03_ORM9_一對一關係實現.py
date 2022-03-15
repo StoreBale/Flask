@@ -59,6 +59,7 @@ class Article(Base):
 
 Base.metadata.drop_all()
 Base.metadata.create_all()
+
 user = User(username='Zscing')
 extend1 = UserExtend(school='zhiliao ketang')
 
