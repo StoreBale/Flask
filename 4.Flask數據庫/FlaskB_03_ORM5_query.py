@@ -31,17 +31,17 @@ class Article(Base):
     title = Column(String(50),nullable=False)
     price = Column(Float,nullable=False)
 
-    def __repr__(self):
-        return "<Article(title:%s)>" % self.title
+    # def __repr__(self):
+    #     return "<Article(title:%s)>" % self.title
 
-# Base.metadata.drop_all()
-# Base.metadata.create_all()
+Base.metadata.drop_all()
+Base.metadata.create_all()
 
 
 for x in range(6):
     article = Article(title='title%s'%x,price=random.randint(50,100))
-#     session.add(article)
-# session.commit()
+    session.add(article)
+session.commit()
 
 # 模型对象
 articles = session.query(Article).all()
