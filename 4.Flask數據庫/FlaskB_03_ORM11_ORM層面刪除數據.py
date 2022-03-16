@@ -33,16 +33,16 @@ class Article(Base):
     author = relationship("User", backref='article')
 
 
-# Base.metadata.drop_all()
-# Base.metadata.create_all()
-#
-# user = User(username='Zscing')
-# article = Article(title="hey")
-# article.author = user
-# session.add(article)
-# session.commit()
+Base.metadata.drop_all()
+Base.metadata.create_all()
 
-user = session.query(User).first()
-session.delete(user)
+user = User(username='Zscing')
+article = Article(title="hey")
+article.author = user
+session.add(article)
 session.commit()
+
+# user = session.query(User).first()
+# session.delete(user)
+# session.commit()
 
